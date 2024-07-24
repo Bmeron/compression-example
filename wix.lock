@@ -21,21 +21,36 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "fallbackExclusionList": [\
     ],\
     "fallbackPool": [\
+      [\
+        "pako",\
+        "npm:2.1.0"\
+      ]\
     ],\
     "packageRegistryData": [\
       [null, [\
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["pako", "npm:2.1.0"]\
           ],\
           "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["pako", [\
+        ["npm:2.1.0", {\
+          "packageLocation": "../dynamic-modules/yarn-cache/cache/pako-npm-2.1.0-78df11948c-8c0.zip/node_modules/pako/",\
+          "packageDependencies": [\
+            ["pako", "npm:2.1.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["user-code", [\
         ["workspace:.", {\
           "packageLocation": "./",\
           "packageDependencies": [\
-            ["user-code", "workspace:."]\
+            ["user-code", "workspace:."],\
+            ["pako", "npm:2.1.0"]\
           ],\
           "linkType": "SOFT"\
         }]\

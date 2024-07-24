@@ -2,8 +2,9 @@ import wixData from 'wix-data';
 
 export async function getAllCollection() {
     const query = wixData.query('LargeMockData');
+    return (await query.find()).items;
     const allItems = await retriveAllItems(query, 50);
-    console.log(`Size of array in MB: ${getSizeInMB(allItems)}`);
+
     return allItems;
 }
 
@@ -15,12 +16,12 @@ async function retriveAllItems(query, limit) {
     const queryPromiseRes = await Promise.all(queryPromise);
 
     const allItems = queryPromiseRes.map(queryRes => queryRes.items);
- 
-    
+
+
     return [...queryRes.items, ...allItems].flat();
 }
 
-export const bulkInsert = (items) =>  wixData.bulkInsert('LargeMockData', items);
+export const bulkInsert = (items) => wixData.bulkInsert('LargeMockData', items);
 
 export async function duplicateCollection() {
     const allItems = await getAllCollection();
@@ -36,11 +37,4 @@ export async function duplicateCollection() {
         // bulkInsert(chunk);
     }
     return Promise.all(res);
-}
-
-function getSizeInMB(array) {
-    const jsonString = JSON.stringify(array);
-    const byteSize = new TextEncoder().encode(jsonString).length;
-    const mbSize = byteSize / (1024 * 1024);
-    return mbSize;
 }

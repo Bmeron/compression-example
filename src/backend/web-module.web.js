@@ -1,5 +1,5 @@
 import { Permissions, webMethod } from "wix-web-module";
-import {getAllCollection} from './data-methods.js';
+import { getAllCollection as _getAllCollection } from 'backend/data-methods.js';
 
 import { gzip } from 'zlib';
 import { promisify } from 'util';
@@ -17,5 +17,4 @@ async function zipPayload(jsonObject) {
     }
 }
 
-
-export const getLatestPosts = webMethod(Permissions.Anyone, (currentPostId) => callAndZip(getAllCollection, currentPostId));
+export const getAllCollection = webMethod(Permissions.Anyone, (zip) => zip ? callAndZip(_getAllCollection) : _getAllCollection());
