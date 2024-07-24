@@ -4,16 +4,16 @@ import pako from 'pako';
 
 $w.onReady(function () {
     $w('#getUnzipButton').onClick(async (event) => {
-        const allItemsZip = await getAllCollection(false);
-
-        $w('#getUnzipText').text = `Size of all Items Unzip in MB: ${getSizeInMB(allItemsZip)}`;
-        const unzipData = unzipPayload(allItemsZip);
-        console.log(unzipData);
+        const allItemsUnZip = await getAllCollection(false);
+        $w('#getUnzipText').text = `Size of all Items Unzip in MB: ${getSizeInMB(allItemsUnZip)}`;
+        console.log(allItemsUnZip);
     });
 
     $w('#getZipButton').onClick(async (event) => {
-        const unzipData = await getAllCollection(true);
-        $w('#getZipText').text = `Size of all Items zip in MB: ${getSizeInMB(unzipData)}`;
+        const allItemsZip = await getAllCollection(true);
+        $w('#getZipText').text = `Size of all Items zip in MB: ${getSizeInMB(allItemsZip)}`;
+        const unzipData = unzipPayload(allItemsZip);
+        console.log(unzipData);
     });
 });
 
