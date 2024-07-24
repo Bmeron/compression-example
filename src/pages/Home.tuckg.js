@@ -3,19 +3,18 @@ import pako from 'pako';
 
 
 $w.onReady(function () {
-    $w('#button1').onClick(async (event) => {
+    $w('#getUnzipButton').onClick(async (event) => {
         const allItemsZip = await getAllCollection(true);
-        const unzip = unzipPayload(allItemsZip);
-        console.log(`Size of zip in MB: ${getSizeInMB(allItemsZip)}`);
-        console.log(`Size of afterUnzip in MB: ${getSizeInMB(unzip)}`);
+
+        $w('#getZipText').text = `Size of allItemsUnzip in MB: ${getSizeInMB(allItemsZip)}`;
+        const unzipData = unzipPayload(allItemsZip);
+        console.log(unzipData);
     });
 
-    $w('#button2').onClick(async (event) => {
-        const allItemsUnzip = await getAllCollection(false);
-        console.log(`Size of allItemsUnzip in MB: ${getSizeInMB(allItemsUnzip)}`);
+    $w('#getZipButton').onClick(async (event) => {
+        const unzipData = await getAllCollection(false);
+        $w('#getZipText').text = `Size of allItemsUnzip in MB: ${getSizeInMB(unzipData)}`;
     });
-
-
 });
 
 function unzipPayload(base64) {
