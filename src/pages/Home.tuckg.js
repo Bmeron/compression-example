@@ -6,7 +6,7 @@ $w.onReady(function () {
     $w('#getUnzipButton').onClick(async (event) => {
         const allItemsZip = await getAllCollection(true);
 
-        $w('#getZipText').text = `Size of allItemsUnzip in MB: ${getSizeInMB(allItemsZip)}`;
+        $w('#getUnzipText').text = `Size of allItemsUnzip in MB: ${getSizeInMB(allItemsZip)}`;
         const unzipData = unzipPayload(allItemsZip);
         console.log(unzipData);
     });
